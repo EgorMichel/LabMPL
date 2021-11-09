@@ -13,6 +13,11 @@ data = pd.DataFrame(lines)
 print(data)
 
 
+def func(pct, allvals):
+    absolute = int(pct/100. * sum(allvals))
+    return absolute
+
+
 class Prep:
     def __init__(self, name):
         self.marks = [0] * 11
@@ -52,7 +57,8 @@ count = 0
 for prep in preps:
     ax = fig.add_subplot(gs[0, count])
     prep.prepare_mark()
-    ax.pie(prep.marks, labels=prep.labels, colors=prep.colors)
+    ax.pie(prep.marks, labels=prep.labels, colors=prep.colors,
+           autopct=lambda pct: func(pct, prep.marks), textprops={'size': 'smaller'})
     ax.set_title(prep.name)
     count += 1
 
