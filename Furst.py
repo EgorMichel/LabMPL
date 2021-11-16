@@ -4,7 +4,7 @@ import numpy as np
 number_of_picture = 0
 for data in os.listdir("dead_moroz"):
     figure, ax = plt.subplots()
-    with open("dead_moroz/" + data) as file:
+    with open(os.path.join("dead_moroz", data)) as file:
         lines = file.readlines()
         for i in range(int(lines[0])):
             if int(lines[0]) < 100:
